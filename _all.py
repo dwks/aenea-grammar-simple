@@ -3,10 +3,8 @@
 from natlink import setMicState
 from aenea import *
 
-import control
 import keyboard
 import words
-import deskenv
 import programs
 
 release = Key("shift:up, ctrl:up, alt:up")

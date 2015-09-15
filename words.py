@@ -38,8 +38,6 @@ from aenea import (
     Text
 )
 
-import ui
-
 
 lastFormatRuleLength = 0
 lastFormatRuleWords = []
