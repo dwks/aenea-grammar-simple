@@ -10,7 +10,7 @@
 #
 # Licensed under LGPL
 
-from natlink import setMicState
+#from natlink import setMicState
 from aenea import (
     Grammar,
     MappingRule,
@@ -32,10 +32,10 @@ from aenea import (
     AppContext,
 )
 
-from dragonfly.actions.keyboard import keyboard
-from dragonfly.actions.typeables import typeables
-if 'semicolon' not in typeables:
-    typeables["semicolon"] = keyboard.get_typeable(char=';')
+#from dragonfly.actions.keyboard import keyboard
+#from dragonfly.actions.typeables import typeables
+#if 'semicolon' not in typeables:
+    #typeables["semicolon"] = keyboard.get_typeable(char=';')
 
 
 release = Key("shift:up, ctrl:up, alt:up")
@@ -52,7 +52,7 @@ def cancel_and_sleep(text=None, text2=None):
 
     """
     print("* Dictation canceled. Going to sleep. *")
-    setMicState("sleeping")
+    #setMicState("sleeping")
 
 
 # For repeating of characters.
