@@ -318,7 +318,7 @@ grammarCfg.cmd.map = Item(
         "semi-colon [<n>]": Key("semicolon/2:%(n)d"),
         "comma [<n>]": Key("comma/2:%(n)d"),
         #"(dot|period|dit|point)": Key("dot"),  # cannot be followed by a repeat count
-        "(dit|point)": Key("dot"),  # cannot be followed by a repeat count
+        "(period|point)": Key("dot"),  # cannot be followed by a repeat count
         "(dash|hyphen|minus) [<n>]": Key("hyphen/2:%(n)d"),
         "underscore [<n>]": Key("underscore/2:%(n)d"),
         "<letters>": Text("%(letters)s"),
@@ -353,7 +353,7 @@ grammarCfg.cmd.map = Item(
 
         'lope [<n>]':  Key('c-left:%(n)d'),
         '(yope|rope) [<n>]':  Key('c-right:%(n)d'),
-        '(hill scratch|hatch) [<n>]': Key('c-backspace:%(n)d'),
+        #'(hill scratch|hatch) [<n>]': Key('c-backspace:%(n)d'),
 
         'hexadecimal': Text("0x"),
         'suspend': Key('c-z'),
@@ -362,10 +362,6 @@ grammarCfg.cmd.map = Item(
         'number <num>': Text("%(num)d"),
         'change <text> to <text2>': Key("home, slash") + Text("%(text)s") + Key("enter, c, e") + Text("%(text2)s") + Key("escape"),
 
-        # Text corrections.
-        "(add|fix) missing space": Key("c-left/3, space, c-right/3"),
-        "(delete|remove) (double|extra) (space|whitespace)": Key("c-left/3, backspace, c-right/3"),  # @IgnorePep8
-        "(delete|remove) (double|extra) (type|char|character)": Key("c-left/3, del, c-right/3"),  # @IgnorePep8
         # Microphone sleep/cancel started dictation.
         "[<text>] (go to sleep|cancel and sleep) [<text2>]": Function(cancel_and_sleep),  # @IgnorePep8
     },
