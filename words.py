@@ -121,3 +121,43 @@ class FormatRule(CompoundRule):
         else:
             return Text(formatted)
 
+class PhraseFormatRule(CompoundRule):
+    spec = ('[start] [new] phrase [<dictation>]')
+    extras = [Dictation(name='dictation')]
+
+    def value(self, node):
+        words = node.words()
+        print "format rule:", words
+
+        leading = (words[0] != 'start')
+        trailing = False #(words[0] != 'end' and words[0] != 'isolated')
+        if words[0] == 'start' or words[0] == 'isolated': words = words[1:]
+        capitalize = (words[0] == 'new')
+        if words[0] == 'new': words = words[1:]
+        words = words[1:]  # delete "phrase"
+
+        if len(words) == 0: return Pause("0")
+
+        formatted = ''
+        addedWords = False
+        for word in words:
+            special = word.split('\\', 1)
+            if(len(special) > 1 and special[1] != 'pronoun'):
+                formatted += special[0]
+            else:
+                if(addedWords): formatted += ' '
+                formatted += special[0]
+                addedWords = True
+        if capitalize: formatted = formatted[:1].capitalize() + formatted[1:]
+        if leading: formatted = ' ' + formatted
+        if trailing: formatted += ' '
+
+        global lastFormatRuleWords
+        lastFormatRuleWords = words
+
+        global lastFormatRuleLength
+        lastFormatRuleLength = len(formatted)
+
+        print "  ->", formatted
+        return Text(formatted)
+
