@@ -23,6 +23,7 @@ try:
 except:
     pass
 
+from words import handle_word
 
 release = Key("shift:up, ctrl:up, alt:up")
 
@@ -235,16 +236,6 @@ pressKeyMap.update(numberMap)
 pressKeyMap.update(controlKeyMap)
 pressKeyMap.update(functionKeyMap)
 
-
-def handle_word(text):
-    #words = map(list, text)
-    #print text
-    words = str(text).split()
-    print 'word (', words, ')'
-    if len(words) > 0:
-        Text(words[0]).execute()
-        if len(words) > 1:
-            Mimic(' '.join(words[1:])).execute()
 
 
 grammarCfg = Config("multi edit")

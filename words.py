@@ -16,6 +16,21 @@ import tformat
 
 lastFormatRuleLength = 0
 lastFormatRuleWords = []
+def handle_word(text):
+    words = str(text).split()
+    print 'word (', words, ')'
+    if len(words) > 0:
+        Text(words[0]).execute()
+
+        global lastFormatRuleWords
+        global lastFormatRuleLength
+        lastFormatRuleWords = words[0:1]
+        lastFormatRuleLength = len(words[0])
+
+        if len(words) > 1:
+            Mimic(' '.join(words[1:])).execute()
+
+
 class NopeFormatRule(CompoundRule):
     spec = ('nope')
 
