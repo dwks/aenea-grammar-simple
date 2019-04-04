@@ -9,9 +9,9 @@
 #
 
 try:
-    from aenea import (Key, Text, CompoundRule, Dictation)
+    from aenea import (Key, Text, Mimic, CompoundRule, Dictation)
 except:
-    from dragonfly import (Key, Text, CompoundRule, Dictation)
+    from dragonfly import (Key, Text, Mimic, CompoundRule, Dictation)
 import tformat
 
 lastFormatRuleLength = 0

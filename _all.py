@@ -44,11 +44,6 @@ class RepeatRule(CompoundRule):
 grammar = Grammar("root rule")
 grammar.add_rule(RepeatRule())  # Add the top-level rule.
 grammar.load()  # Load the grammar.
-try:
-    engine = get_engine("voxhub")
-    engine.connect()
-except:
-    pass
 
 def unload():
     """Unload function which will be called at unload time."""
@@ -56,3 +51,9 @@ def unload():
     if grammar:
         grammar.unload()
     grammar = None
+
+if __name__ == '__main__':
+    engine = get_engine("voxhub")
+    #engine.list_available_microphones()
+    #engine.dump_grammar()
+    engine.connect()
