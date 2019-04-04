@@ -10,7 +10,10 @@
 #
 # Licensed under LGPL
 
-from aenea import *
+try:
+    from aenea import *
+except:
+    from dragonfly import *
 
 try:
     from dragonfly.actions.keyboard import keyboard
@@ -24,7 +27,6 @@ except:
 release = Key("shift:up, ctrl:up, alt:up")
 
 
-from natlink import setMicState
 def cancel_and_sleep(text=None, text2=None):
     """Used to cancel an ongoing dictation and puts microphone to sleep.
 
@@ -35,8 +37,12 @@ def cancel_and_sleep(text=None, text2=None):
     "'random mumbling go to sleep'" => Microphone sleep.
 
     """
-    print("* Dictation canceled. Going to sleep. *")
-    setMicState("sleeping")
+    try:
+        from natlink import setMicState
+        setMicState("sleeping")
+        print("* Dictation canceled. Going to sleep. *")
+    except:
+        pass
 
 
 # For repeating of characters.

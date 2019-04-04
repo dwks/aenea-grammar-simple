@@ -1,6 +1,9 @@
 # _all.py: main rule for DWK's grammar
 
-from aenea import *
+try:
+    from aenea import *
+except:
+    from dragonfly import *
 
 import keyboard
 import words
@@ -41,6 +44,11 @@ class RepeatRule(CompoundRule):
 grammar = Grammar("root rule")
 grammar.add_rule(RepeatRule())  # Add the top-level rule.
 grammar.load()  # Load the grammar.
+try:
+    engine = get_engine("voxhub")
+    engine.connect()
+except:
+    pass
 
 def unload():
     """Unload function which will be called at unload time."""

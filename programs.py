@@ -1,6 +1,9 @@
 # commands for controlling various programs
 
-from aenea import *
+try:
+    from aenea import *
+except:
+    from dragonfly import *
 
 gitcommand_array = [
     'add',

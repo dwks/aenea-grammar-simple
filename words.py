@@ -8,36 +8,11 @@
 # Licensed under the LGPL, see <http://www.gnu.org/licenses/>
 #
 
-import aenea
-import aenea.misc
-import aenea.vocabulary
-import aenea.configuration
-import aenea.format
-
-from aenea import (
-    AeneaContext,
-    AppContext,
-    Alternative,
-    CompoundRule,
-    Dictation,
-    DictList,
-    DictListRef,
-    Grammar,
-    IntegerRef,
-    Literal,
-    ProxyAppContext,
-    MappingRule,
-    NeverContext,
-    Repetition,
-    RuleRef,
-    Sequence
-)
-
-from aenea import (
-    Key,
-    Text
-)
-
+try:
+    from aenea import (Key, Text, CompoundRule, Dictation)
+except:
+    from dragonfly import (Key, Text, CompoundRule, Dictation)
+import tformat
 
 lastFormatRuleLength = 0
 lastFormatRuleWords = []
@@ -71,7 +46,7 @@ class ReFormatRule(CompoundRule):
         if words[0].lower() in ('upper', 'natural'):
             del words[0]
 
-        function = getattr(aenea.format, 'format_%s' % words[0].lower())
+        function = getattr(tformat, 'format_%s' % words[0].lower())
         formatted = function(words[1:])
 
         global lastFormatRuleLength
@@ -106,7 +81,7 @@ class FormatRule(CompoundRule):
                 bomb = words[bomb_point+1 : ]
             words = words[ : bomb_point]
 
-        function = getattr(aenea.format, 'format_%s' % words[0].lower())
+        function = getattr(tformat, 'format_%s' % words[0].lower())
         formatted = function(words[1:])
         global lastFormatRuleWords
         lastFormatRuleWords = words[1:]
