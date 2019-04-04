@@ -142,7 +142,7 @@ class PhraseFormatRule(CompoundRule):
         addedWords = False
         for word in words:
             special = word.split('\\', 1)
-            if(len(special) > 1 and special[1] != 'pronoun'):
+            if(len(special) > 1 and special[1] != 'pronoun' and special[1] != 'determiner'):
                 formatted += special[0]
             else:
                 if(addedWords): formatted += ' '

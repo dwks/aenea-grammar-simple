@@ -1,6 +1,5 @@
 # _all.py: main rule for DWK's grammar
 
-from natlink import setMicState
 from aenea import *
 
 import keyboard

@@ -10,37 +10,21 @@
 #
 # Licensed under LGPL
 
-from natlink import setMicState
-from aenea import (
-    Grammar,
-    MappingRule,
-    Text,
-    Key,
-    Mimic,
-    Function,
-    Dictation,
-    Choice,
-    Window,
-    Config,
-    Section,
-    Item,
-    IntegerRef,
-    Alternative,
-    RuleRef,
-    Repetition,
-    CompoundRule,
-    AppContext,
-)
+from aenea import *
 
-from dragonfly.actions.keyboard import keyboard
-from dragonfly.actions.typeables import typeables
-if 'semicolon' not in typeables:
-    typeables["semicolon"] = keyboard.get_typeable(char=';')
+try:
+    from dragonfly.actions.keyboard import keyboard
+    from dragonfly.actions.typeables import typeables
+    if 'semicolon' not in typeables:
+        typeables["semicolon"] = keyboard.get_typeable(char=';')
+except:
+    pass
 
 
 release = Key("shift:up, ctrl:up, alt:up")
 
 
+from natlink import setMicState
 def cancel_and_sleep(text=None, text2=None):
     """Used to cancel an ongoing dictation and puts microphone to sleep.
 
