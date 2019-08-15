@@ -9,9 +9,9 @@
 #
 
 try:
-    from aenea import (Key, Text, Mimic, CompoundRule, Dictation)
+    from aenea import (Key, Text, Mimic, CompoundRule, Dictation, Pause)
 except:
-    from dragonfly import (Key, Text, Mimic, CompoundRule, Dictation)
+    from dragonfly import (Key, Text, Mimic, CompoundRule, Dictation, Pause)
 import tformat
 
 lastFormatRuleLength = 0
@@ -72,6 +72,7 @@ class FormatRule(CompoundRule):
     spec = ('[upper | natural] ( proper | camel | rel-path | abs-path | score | sentence | '
             'scope-resolve | jumble | dotword | dashword | natword | snakeword | brooding-narrative) [<dictation>] [bomb]')
     extras = [Dictation(name='dictation')]
+    exported = False
 
     def value(self, node):
         words = node.words()
